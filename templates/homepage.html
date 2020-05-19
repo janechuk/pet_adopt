@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Pets{% endblock %}
+{% block content %}
+<h2>Pets</h2>
+<div class="row">
+
+    {% for pet in pets %}
+    <div class="card" style="width: 18rem;">
+        {% if pet.photo_url %}
+        <img src=" {{pet.photo_url}} " class="card-img-top" alt="...">
+        {%else%}
+        <img src="https://images.unsplash.com/photo-1565945887714-d5139f4eb0ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"
+            class="card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title"><a href="/pets/{{pet.id}}">{{pet.name}}</a></h5>
+            <h4 class="card-title"> Is available = {{pet.available}} </h4>
+            <p class="card-text"> {{pet.notes}}
+
+            </p>
+        </div>
+
+    </div>
+    {% endfor %}
+
+
+</div>
+
+<a class="btn btn-success" href="/add" role="button">Add a Pet</a>
+
+{% endblock %}
